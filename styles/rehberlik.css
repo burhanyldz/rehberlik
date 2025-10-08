@@ -77,8 +77,8 @@ body {
 .category-nav-scroll {
     overflow-x: auto;
     white-space: nowrap;
-    padding: 10px 0 16px 0;
-    margin-bottom: 16px;
+    padding: 10px 0 6px 0;
+    margin-bottom: 6px;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 }
