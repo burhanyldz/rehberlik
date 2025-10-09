@@ -69,11 +69,6 @@
   transition: opacity 0.3s ease;
 }
 
-.inline-video-player .plyr__control--overlaid:hover {
-  background: rgba(0, 0, 0, 0.9);
-  transform: scale(1.1);
-}
-
 .inline-video-player .plyr__control--overlaid svg {
   width: 28px;
   height: 28px;
