@@ -210,6 +210,16 @@ class RehberlikPlatform {
         this.updateContentCounts();
         this.renderContent();
         
+        // Set initial glider position
+        const initialActiveButton = document.querySelector('.filter-btn.active');
+        if (initialActiveButton) {
+            const filterButtonsContainer = document.querySelector('.filter-buttons');
+            const left = initialActiveButton.offsetLeft;
+            const width = initialActiveButton.offsetWidth;
+            filterButtonsContainer.style.setProperty('--glider-left', `${left}px`);
+            filterButtonsContainer.style.setProperty('--glider-width', `${width}px`);
+        }
+        
         // Center the initial active category
         setTimeout(() => {
             const activeCategory = document.querySelector('.category-item.active');
@@ -290,10 +300,25 @@ class RehberlikPlatform {
     switchFilter(filter) {
         this.currentFilter = filter;
         
-        // Update active state
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.filter === filter);
+        // Update active state and move glider
+        const filterButtonsContainer = document.querySelector('.filter-buttons');
+        const buttons = filterButtonsContainer.querySelectorAll('.filter-btn');
+        let activeButton = null;
+
+        buttons.forEach(btn => {
+            const isActive = btn.dataset.filter === filter;
+            btn.classList.toggle('active', isActive);
+            if (isActive) {
+                activeButton = btn;
+            }
         });
+
+        if (activeButton) {
+            const left = activeButton.offsetLeft;
+            const width = activeButton.offsetWidth;
+            filterButtonsContainer.style.setProperty('--glider-left', `${left}px`);
+            filterButtonsContainer.style.setProperty('--glider-width', `${width}px`);
+        }
 
         this.renderContent();
     }

@@ -183,6 +183,21 @@ body {
     border: 1px solid var(--color-border-light);
     border-radius: 12px;
     box-shadow: 0 1px 3px rgba(0, 51, 179, 0.1);
+    position: relative;
+}
+
+.filter-buttons::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: var(--glider-left, 4px);
+    width: var(--glider-width, 0px);
+    background-color: white;
+    border-radius: 8px;
+    z-index: 1;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    transition: left 0.3s ease, width 0.3s ease;
 }
 
 .filter-btn {
@@ -201,6 +216,8 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
     min-width: 120px;
+    position: relative;
+    z-index: 2;
 }
 
 .filter-btn:hover {
@@ -208,15 +225,36 @@ body {
 }
 
 .filter-btn.active {
-    background-color: white;
     color: var(--color-primary);
-    box-shadow: 0 2px 4px rgba(0, 51, 179, 0.1);
 }
 
 .filter-btn svg {
     width: 18px;
     height: 18px;
+    z-index: 2;
 }
+
+.filter-btn span {
+    z-index: 2;
+}
+
+/* Disable blue tap highlight and prevent text selection on interactive elements */
+.filter-btn,
+.category-item,
+.play-button,
+.view-btn,
+.download-btn,
+.info-icon,
+.video-card,
+.document-card {
+    -webkit-tap-highlight-color: transparent; /* iOS/Chrome touch highlight */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; /* Prevent text selection on click/drag */
+    touch-action: manipulation; /* Improve tap responsiveness on touch devices */
+}
+
 
 /* Video Grid */
 .video-grid {
