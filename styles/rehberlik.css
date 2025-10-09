@@ -156,10 +156,6 @@ body {
     background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
 }
 
-.icon-emoji {
-    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
-}
-
 .category-text {
     display: flex;
     flex-direction: column;
@@ -464,6 +460,7 @@ body {
 .document-info {
     padding: 16px;
     position: relative;
+    background-color: white;
 }
 
 .document-header {
